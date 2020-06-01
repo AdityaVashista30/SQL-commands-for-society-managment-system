@@ -1,0 +1,83 @@
+SQL> create table house_details(
+  2  house_no varchar(20),
+  3  house_type varchar(15),
+  4  other_details varchar(40),
+  5  constraint pk1 primary key(house_no));
+
+SQL> create table user_details(
+  2  user_id number(5),
+  3  first_name varchar(20),
+  4  last_name varchar(20),
+  5  dob date,
+  6  phone_no number(10),
+  7  entry_date date,
+  8  email varchar(30),
+  9  constraint pk2 primary key(user_id));
+
+SQL> create table relation_table(
+  2  user_id number(5),
+  3  house_no varchar(20),
+  4  constraint pk3 primary key(user_id),
+  5  constraint fk1 foreign key(user_id) references user_details(user_id),
+  6  constraint fk2 foreign key(house_no) references house_details(house_no));
+
+SQL> create table vehicle_info(
+  2  vehicle_no varchar(10),
+  3  house_no varchar(20),
+  4  car_name varchar(15),
+  5  parking_no varchar(5),
+  6  constraint pk4 primary key(vehicle_no),
+  7  constraint fk3 foreign key(house_no) references house_details(house_no));
+
+SQL> create table house_rent(
+  2  rent_id number(3),
+  3  house_no varchar(20),
+  4  entry_date date,
+  5  rent number(6),
+  6  constraint pk5 primary key(rent_id),
+  7  constraint fk4 foreign key(house_no) references house_details(house_no));
+
+SQL> create table selling_house_details(
+  2  sell_id number(3),
+  3  house_no varchar(20),
+  4  entry_date date,
+  5  price number(8),
+  6  constraint pk6 primary key(sell_id),
+  7  constraint fk5 foreign key(house_no) references house_details(house_no));
+
+SQL> create table complains(
+  2  complain_id number(4),
+  3  house_no varchar(20),
+  4  entry_date date,
+  5  subject varchar(25),
+  6  reply varchar(50),
+  7  complaint varchar(50),
+  8  constraint pk7 primary key(complain_id),
+  9  constraint fk6 foreign key(house_no) references house_details(house_no));
+
+SQL> create table due_bills(
+  2  house_no varchar(20),
+  3  bill_type varchar(10),
+  4  fine number(8),
+  5  due_date date,
+  6  constraint fk7 foreign key(house_no) references house_details(house_no));
+
+SQL> create table guest_info(
+  2  token_no number(3),
+  3  guest_name varchar(30),
+  4  house_no varchar(20),
+  5  phone_no number(10),
+  6  entry_date date,
+  7  entry_time timestamp,
+  8  exit_time timestamp,
+  9  constraint fk8 foreign key(house_no) references house_details(house_no));
+
+SQL> alter table guest_info
+  2  add constraint pk8 primary key(token_no,entry_date,entry_time);
+
+SQL> alter table due_bills
+  2  add constraint pk9 primary key(house_no,bill_type,due_date);
+
+----------------PL/SQL PROCEDUER-------------------------
+
+SET SERVEROUTPUT ON

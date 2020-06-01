@@ -1,0 +1,66 @@
+CREATE OR REPLACE PROCEDURE Delete_user_details(delete_User_id number) 
+AS
+BEGIN
+DELETE FROM user_details WHERE user_id = delete_User_id;
+COMMIT;
+END;
+/
+
+
+---------UPDATE PROCEDUERS------------
+
+CREATE or replace PROCEDURE UpdatePhoneNumber(p_user IN number,p_number IN number)
+AS
+BEGIN
+UPDATE user_details
+SET phone_no=p_number
+WHERE user_id=p_user;
+END;
+/
+
+CREATE or replace PROCEDURE UpdateSellPrice(p_sellid IN number,p_price IN number)
+AS
+BEGIN
+UPDATE selling_house_details
+SET price=p_price
+WHERE sell_id=p_sellid;
+END;
+/
+
+CREATE or replace PROCEDURE UpdateRent(p_rentid IN number,p_rent IN number)
+AS
+BEGIN
+UPDATE house_rent
+SET rent=p_rent
+WHERE rent_id=p_rentid;
+END;
+/
+
+CREATE OR REPLACE TRIGGER phone_update
+BEFORE INSERT OR UPDATE OF phone_no ON user_details
+FOR EACH ROW
+BEGIN
+DBMS_OUTPUT.PUT_LINE('OLD Number: ' ||:OLD.phone_no);
+DBMS_OUTPUT.PUT_LINE('NEW Number:' ||:NEW.phone_no);
+END;
+/
+
+
+CREATE OR REPLACE TRIGGER rent_update
+BEFORE INSERT OR UPDATE OF rent ON  house_rent
+FOR EACH ROW
+BEGIN
+DBMS_OUTPUT.PUT_LINE('OLD Rent: ' ||:OLD.rent);
+DBMS_OUTPUT.PUT_LINE('NEW Rent:' ||:NEW.rent);
+END;
+/
+
+CREATE OR REPLACE TRIGGER sell_price_update
+BEFORE INSERT OR UPDATE OF price ON  selling_house_details
+FOR EACH ROW
+BEGIN
+DBMS_OUTPUT.PUT_LINE('OLD Price: ' ||:OLD.price);
+DBMS_OUTPUT.PUT_LINE('NEW Price:' ||:NEW.price);
+END;
+/
+

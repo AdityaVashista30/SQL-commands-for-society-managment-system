@@ -1,0 +1,127 @@
+CREATE OR REPLACE PROCEDURE insertHouseDetails(
+	   p_houseno IN house_details.house_no%TYPE,
+	   p_housetype IN house_details.house_type%TYPE,
+	   p_otherdetails IN house_details.other_details%TYPE)
+IS
+BEGIN
+
+  INSERT INTO house_details VALUES (p_houseno,p_housetype,p_otherdetails);
+  COMMIT; 
+END;
+/
+
+begin
+  2  insertHouseDetails('a11','aaas','sdsadasdasd');
+  3  end;
+  4  /
+
+CREATE OR REPLACE PROCEDURE insertUserDetails(
+	   p_user IN user_details.user_id%TYPE,
+	   p_firstname IN user_details.first_name%TYPE,
+	   p_lastname IN user_details.last_name%TYPE,
+           p_dob IN user_details.dob%TYPE,
+	   p_phone IN user_details.phone_no%TYPE,
+	   p_entry IN user_details.entry_date%TYPE,
+           p_email IN user_details.email%TYPE)
+IS
+BEGIN
+
+  INSERT INTO user_details VALUES (p_user,p_firstname,p_lastname,p_dob,p_phone,p_entry,p_email);
+  COMMIT; 
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insertRelationTable(
+	   p_user IN relation_table.user_id%TYPE,
+	   p_house IN relation_table.house_no%TYPE)
+IS
+BEGIN
+
+  INSERT INTO relation_table VALUES (p_user,p_house);
+  COMMIT; 
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insertVehicleInfo(
+	   p_vehicleno IN vehicle_info.vehicle_no%TYPE,
+	   p_houseno IN vehicle_info.house_no%TYPE,
+	   p_carname IN vehicle_info.car_name%TYPE,
+           p_parkingno IN vehicle_info.parking_no%TYPE)
+IS
+BEGIN
+
+  INSERT INTO vehicle_info VALUES (p_vehicleno,p_houseno,p_carname,p_parkingno);
+COMMIT; 
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insertHouseRent(
+	   p_rentid IN house_rent.rent_id%TYPE,
+	   p_houseno IN house_rent.house_no%TYPE,
+	   p_entry IN house_rent.entry_date%TYPE,
+           p_rent IN house_rent.rent%TYPE)
+IS
+BEGIN
+
+  INSERT INTO house_rent VALUES(p_rentid,p_houseno,p_entry,p_rent);
+COMMIT; 
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insertSellingHouseDetails(
+	   p_sellid IN selling_house_details.sell_id%TYPE,
+	   p_houseno IN selling_house_details.house_no%TYPE,
+	   p_entry IN selling_house_details.entry_date%TYPE,
+           p_price IN selling_house_details.price%TYPE)
+IS
+BEGIN
+
+  INSERT INTO selling_house_details VALUES(p_sellid,p_houseno,p_entry,p_price);
+COMMIT; 
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insertComplains(
+	   p_complainid IN complains.complain_id%TYPE,
+	   p_houseno IN complains.house_no%TYPE,
+	   p_entry IN complains.entry_date%TYPE,
+           p_subj IN complains.subject%TYPE,
+           p_reply IN complains.reply%TYPE,
+           p_complaint IN complains.complaint%TYPE)
+IS
+BEGIN
+
+  INSERT INTO complains VALUES(p_complainid,p_houseno,p_entry,p_subj,p_reply,p_complaint);
+COMMIT; 
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insertDueBills(
+	   p_houseno IN due_bills.house_no%TYPE,
+	   p_billtype IN due_bills.bill_type%TYPE,
+           p_fine IN due_bills.fine%TYPE,
+           p_duedate IN due_bills.due_date%TYPE)
+IS
+BEGIN
+
+  INSERT INTO due_bills VALUES(p_houseno,p_billtype,p_fine,p_duedate);
+COMMIT; 
+END;
+/
+
+
+CREATE OR REPLACE PROCEDURE insertGuestInfo(
+	   p_token IN guest_info.token_no%TYPE,
+	   p_guestname IN guest_info.guest_name%TYPE,
+	   p_houseno IN guest_info.house_no%TYPE,
+	   p_phone IN guest_info.phone_no%TYPE,
+	   p_entry IN guest_info.entry_date%TYPE,
+           p_entrytime IN guest_info.entry_time%TYPE, 
+           p_exittime IN guest_info.exit_time%TYPE)
+IS
+BEGIN
+
+  INSERT INTO guest_info VALUES (p_token,p_guestname,p_houseno,p_phone,p_entry,p_entrytime,p_exittime);
+  COMMIT; 
+END;
+/

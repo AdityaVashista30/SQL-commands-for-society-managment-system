@@ -1,0 +1,75 @@
+begin
+  insertHouseDetails('A-101','3BHK','parkfacing');
+
+  insertHouseDetails('A-205','3BHK','roadfacing');
+
+  insertHouseDetails('B-201','2BHK','parkfacing');
+
+  insertHouseDetails('C-701','3BHK','parkfacing');
+
+  insertHouseDetails('D-308','2BHK','roadfacing');
+    end;
+    /
+
+
+begin
+    insertUserDetails(1,'Aditya','Wadhwa','1999-02-05',1234567890,2019-05-01);
+
+    insertUserDetails(2,'Akshit','Mehta','1999-06-14',1234567899,2019-05-02);
+
+    insertUserDetails(3,'Aditya','Vashishta','1996-08-04',1234567898,2019-05-03);   
+ 
+    insertUserDetails(4,'Akanksha','Goyal','1997-04-20',1234567897,2019-02-21);
+
+    insertUserDetails(5,'Himanshu','Chaudhary','1995-09-13',1234567894,2019-01-20);
+end;
+    /
+
+
+begin
+    insertRelationTable('1','A-205');
+ insertRelationTable('2','A-101');
+ insertRelationTable('3','C-701');
+ insertRelationTable('4','B-201');
+ insertRelationTable('5','D-308');
+    end;
+    /
+
+
+begin
+    insertVehicleInfo('ch01-am-1234','A-205','i10',A1);
+   insertVehicleInfo('ch01-ab-5467','A-101','vento',A2);
+ insertVehicleInfo('ch01-ba-7890','C-701','breeza',A3);
+ insertVehicleInfo('ch01-z-3009','B-201','accent',A4);
+ insertVehicleInfo('ch01-bc-1234','D-308','estilo',A5);
+  end;
+    /
+
+
+begin
+    insertHouseRent(1,'A-205','2019-05-02',18000);
+ insertHouseRent(2,'A-101','2019-05-03',20000);
+   end;
+    /
+
+begin
+    insertSellingHouseDetails(1,'C-701','2019-05-04',5500000);
+   end;
+    /
+
+begin
+    insertComplains(1,'A-205','2019-05-03','plumber needed','will get back to you','taps not working');
+ 
+   end;
+    /
+
+begin
+    insertDueBills('D-308','electricity',1500,'2019-05-08');
+end;
+/
+
+
+begin
+      insertGuestInfo(1,'Prashant','A-101',2134567890,'2019-05-07','2019-05-07 12:56:00','2019-05-07 03:23:00');
+end
+/
